@@ -1,0 +1,49 @@
+﻿@model FoodTronix.Models.Entities.User
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>FoodTronix | Register</title>
+    <link rel="stylesheet" type="text/css" media="all" href="~/Auth/css/styles.css">
+    <link rel="stylesheet" type="text/css" media="all" href="~/Auth/css/switchery.min.css">
+    <script type="text/javascript" src="~/Auth/js/switchery.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Register</h1>
+        <form asp-action="Register" asp-controller="Account">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label>
+                    Username
+                    <input placeholder="Enter Username" tabindex="1" asp-for="Username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </label>
+            </div>
+            <div class="col-2">
+                <label>
+                    Password
+                    <input placeholder="Enter Password" tabindex="1" asp-for="Hash" />
+                    <span asp-validation-for="Hash" class="text-danger"></span>
+                </label>
+            </div>
+            <div class="col-submit">
+                <button type="submit" class="submitbtn">Register</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+        elems.forEach(function(html) {
+          var switchery = new Switchery(html);
+        });
+    </script>
+</body>
+</html>

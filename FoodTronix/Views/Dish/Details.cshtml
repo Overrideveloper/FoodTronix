@@ -1,0 +1,32 @@
+﻿@model FoodTronix.Models.Entities.Dish
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2><a class="pull-right btn-lg btn btn-info" asp-action="Index"><i class="fa fa-arrow-circle-left"></i> Return to List</a></h2>
+        <br />
+    </div>
+    <br />
+    <!-- /.col-lg-12 -->
+</div>
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><b>Dish:</b> @Html.DisplayFor(model => model.Name)</h4>
+                <h4><b>Amount:</b> N @Html.DisplayFor(model => model.Amount)</h4>
+                <h4><b>Meal:</b> @Html.DisplayFor(model => model.Meal.Name)</h4>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <img style="max-width:100%; max-height:100%; text-align:center; display: block; margin-left: auto; margin-right: auto; width: 50%;" src="~/uploads/@Html.DisplayFor(model => model.Image)" />
+            </div>
+        </div>
+    </div>
+</div>

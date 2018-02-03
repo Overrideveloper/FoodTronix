@@ -20,15 +20,9 @@ namespace FoodTronix.Models.Entities
         [DataType(DataType.Password)]
         public string Hash { get; set; }
 
-        [Required(ErrorMessage = "Input password again!")]
-        [Compare("Hash", ErrorMessage = "Passwords don't match!")]
-        [Display(Name = "Confirm Password")]
-        [DataType(DataType.Password)]
-        public string ConfirmHash { get; set; }
-
         //Entity r/ship
-        public int RoleID { get; set; }
+        /*public int RoleID { get; set; }
 
-        public virtual Role Role { get; set; }
+        public virtual Role Role { get; set; }*/
     }
 }

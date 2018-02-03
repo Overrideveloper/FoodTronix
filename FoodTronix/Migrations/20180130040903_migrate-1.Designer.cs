@@ -10,8 +10,8 @@ using System;
 namespace FoodTronix.Migrations
 {
     [DbContext(typeof(FoodTronixContext))]
-    [Migration("20180129231106_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20180130040903_migrate-1")]
+    partial class migrate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,30 +37,15 @@ namespace FoodTronix.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ConfirmHash")
-                        .IsRequired();
-
                     b.Property<string>("Hash")
                         .IsRequired();
-
-                    b.Property<int>("RoleID");
 
                     b.Property<string>("Username")
                         .IsRequired();
 
                     b.HasKey("ID");
 
-                    b.HasIndex("RoleID");
-
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("FoodTronix.Models.Entities.User", b =>
-                {
-                    b.HasOne("FoodTronix.Models.Entities.Role", "Role")
-                        .WithMany("User")
-                        .HasForeignKey("RoleID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

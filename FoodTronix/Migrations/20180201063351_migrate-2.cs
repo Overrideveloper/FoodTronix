@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace FoodTronix.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class migrate2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Role",
+                name: "Meal",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -18,44 +18,44 @@ namespace FoodTronix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Role", x => x.ID);
+                    table.PrimaryKey("PK_Meal", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Dish",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    ConfirmHash = table.Column<string>(nullable: false),
-                    Hash = table.Column<string>(nullable: false),
-                    RoleID = table.Column<int>(nullable: false),
-                    Username = table.Column<string>(nullable: false)
+                    Amount = table.Column<double>(nullable: false),
+                    Image = table.Column<string>(nullable: false),
+                    MealID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.ID);
+                    table.PrimaryKey("PK_Dish", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_User_Role_RoleID",
-                        column: x => x.RoleID,
-                        principalTable: "Role",
+                        name: "FK_Dish_Meal_MealID",
+                        column: x => x.MealID,
+                        principalTable: "Meal",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_RoleID",
-                table: "User",
-                column: "RoleID");
+                name: "IX_Dish_MealID",
+                table: "Dish",
+                column: "MealID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Dish");
 
             migrationBuilder.DropTable(
-                name: "Role");
+                name: "Meal");
         }
     }
 }

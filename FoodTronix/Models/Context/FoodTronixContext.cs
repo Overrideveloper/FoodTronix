@@ -16,6 +16,8 @@ namespace FoodTronix.Models.Context
 
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Meal> Meal { get; set; }
+        public virtual DbSet<Dish> Dish { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

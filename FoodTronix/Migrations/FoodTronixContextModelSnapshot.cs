@@ -18,6 +18,44 @@ namespace FoodTronix.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
+            modelBuilder.Entity("FoodTronix.Models.Entities.Dish", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<double>("Amount");
+
+                    b.Property<string>("Image")
+                        .IsRequired();
+
+                    b.Property<int>("MealID");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("MealID");
+
+                    b.ToTable("Dish");
+                });
+
+            modelBuilder.Entity("FoodTronix.Models.Entities.Meal", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Image")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Meal");
+                });
+
             modelBuilder.Entity("FoodTronix.Models.Entities.Role", b =>
                 {
                     b.Property<int>("ID")
@@ -36,29 +74,22 @@ namespace FoodTronix.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ConfirmHash")
-                        .IsRequired();
-
                     b.Property<string>("Hash")
                         .IsRequired();
-
-                    b.Property<int>("RoleID");
 
                     b.Property<string>("Username")
                         .IsRequired();
 
                     b.HasKey("ID");
 
-                    b.HasIndex("RoleID");
-
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("FoodTronix.Models.Entities.User", b =>
+            modelBuilder.Entity("FoodTronix.Models.Entities.Dish", b =>
                 {
-                    b.HasOne("FoodTronix.Models.Entities.Role", "Role")
-                        .WithMany("User")
-                        .HasForeignKey("RoleID")
+                    b.HasOne("FoodTronix.Models.Entities.Meal", "Meal")
+                        .WithMany("Dishes")
+                        .HasForeignKey("MealID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

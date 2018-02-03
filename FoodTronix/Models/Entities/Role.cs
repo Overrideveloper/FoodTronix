@@ -15,6 +15,6 @@ namespace FoodTronix.Models.Entities
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        public virtual ICollection<User> User { get; set; }
+        /*public virtual ICollection<User> User { get; set; }*/
     }
 }
