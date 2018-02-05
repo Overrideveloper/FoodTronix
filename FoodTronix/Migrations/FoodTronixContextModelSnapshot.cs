@@ -40,6 +40,26 @@ namespace FoodTronix.Migrations
                     b.ToTable("Dish");
                 });
 
+            modelBuilder.Entity("FoodTronix.Models.Entities.Item", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Amount");
+
+                    b.Property<int>("DishID");
+
+                    b.Property<int>("OrderGroupID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DishID");
+
+                    b.HasIndex("OrderGroupID");
+
+                    b.ToTable("Item");
+                });
+
             modelBuilder.Entity("FoodTronix.Models.Entities.Meal", b =>
                 {
                     b.Property<int>("ID")
@@ -56,17 +76,23 @@ namespace FoodTronix.Migrations
                     b.ToTable("Meal");
                 });
 
-            modelBuilder.Entity("FoodTronix.Models.Entities.Role", b =>
+            modelBuilder.Entity("FoodTronix.Models.Entities.OrderGroup", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
+                    b.Property<int>("Amount");
+
+                    b.Property<string>("Tag")
                         .IsRequired();
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Role");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrderGroup");
                 });
 
             modelBuilder.Entity("FoodTronix.Models.Entities.User", b =>
@@ -90,6 +116,27 @@ namespace FoodTronix.Migrations
                     b.HasOne("FoodTronix.Models.Entities.Meal", "Meal")
                         .WithMany("Dishes")
                         .HasForeignKey("MealID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("FoodTronix.Models.Entities.Item", b =>
+                {
+                    b.HasOne("FoodTronix.Models.Entities.Dish", "Dish")
+                        .WithMany("Items")
+                        .HasForeignKey("DishID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("FoodTronix.Models.Entities.OrderGroup", "OrderGroup")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderGroupID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("FoodTronix.Models.Entities.OrderGroup", b =>
+                {
+                    b.HasOne("FoodTronix.Models.Entities.User", "User")
+                        .WithMany("OrderGroups")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -10,40 +10,57 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html">
     <title>FoodTronix | Login</title>
-    <link rel="stylesheet" type="text/css" media="all" href="~/Auth/css/styles.css">
-    <link rel="stylesheet" type="text/css" media="all" href="~/Auth/css/switchery.min.css">
-    <script type="text/javascript" src="~/Auth/js/switchery.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Admin/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div id="wrapper">
-        <h1>Login</h1>
-        <form asp-action="Login" asp-controller="Account">
-            <div asp-validation-summary="All"  class="text-danger"></div>
-            <div class="col-2">
-                <label>
-                    Username
-                    <input placeholder="Enter Username" tabindex="1" asp-for="Username" />
-                    <span asp-validation-for="Username" class="text-danger"></span>
-                </label>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Log in</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form asp-action="Login" role="form" asp-controller="Account">
+                            <fieldset>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <input placeholder="Username" class="form-control" name="email" asp-for="Username"autofocus />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input placeholder="Password" class="form-control" name="password" asp-for="Hash" />
+                                    <span asp-validation-for="Hash" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Log in</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="col-2">
-                <label>
-                    Password
-                    <input placeholder="Enter Password" tabindex="1" asp-for="Hash" />
-                    <span asp-validation-for="Hash" class="text-danger"></span>
-                </label>
-            </div>
-            <div class="col-submit">
-                <button type="submit" class="submitbtn">Log in</button>
-            </div>
-        </form>
+        </div>
     </div>
-    <script type="text/javascript">
-        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
-        elems.forEach(function(html) {
-          var switchery = new Switchery(html);
-        });
-    </script>
+    <!-- jQuery -->
+    <script src="~/Admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Admin/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Admin/dist/js/sb-admin-2.js"></script>
 </body>
 </html>

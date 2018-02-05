@@ -24,6 +24,7 @@ namespace FoodTronix.Controllers
             environment = _environment;
         }
 
+        [Route("dish")]
         // GET: Dish
         public async Task<IActionResult> Index()
         {
@@ -31,6 +32,7 @@ namespace FoodTronix.Controllers
             return View(await foodTronixContext.ToListAsync());
         }
 
+        [Route("dish/details/{id:int}")]
         // GET: Dish/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -161,9 +163,9 @@ namespace FoodTronix.Controllers
                     TempData["success"] = "Dish modified!";
                     return RedirectToAction("Index");
                 }
-                ViewData["MealID"] = new SelectList(_context.Meal, "ID", "Name", dish.MealID);
-                return View(dish);
             }
+            ViewData["MealID"] = new SelectList(_context.Meal, "ID", "Name", dish.MealID);
+            return View(dish);
         }
         // GET: Dish/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -192,6 +194,7 @@ namespace FoodTronix.Controllers
             var dish = await _context.Dish.SingleOrDefaultAsync(m => m.ID == id);
             _context.Dish.Remove(dish);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Dish deleted!";
             return RedirectToAction(nameof(Index));
         }
 

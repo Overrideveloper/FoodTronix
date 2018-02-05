@@ -19,6 +19,7 @@ namespace FoodTronix.Controllers
             _foodtronix = foodTronix;
         }
 
+        [Route("account/register")]
         // GET: Account/Register
         public ActionResult Register()
         {
@@ -42,8 +43,7 @@ namespace FoodTronix.Controllers
                     };
                     _foodtronix.User.Add(_user);
                     _foodtronix.SaveChanges();
-                    var userObj = JsonConvert.SerializeObject(_user);
-                    HttpContext.Session.SetString("User", userObj);
+                    HttpContext.Session.SetInt32("User", _user.ID);
                     ModelState.Clear();
                     return RedirectToAction("Index", "Restaurant");
                 }
@@ -55,6 +55,7 @@ namespace FoodTronix.Controllers
             }
         }
 
+        [Route("account/login")]
         // GET: Account/Login
         public ActionResult Login()
         {
@@ -75,8 +76,7 @@ namespace FoodTronix.Controllers
                     var hash = BCrypt.Net.BCrypt.EnhancedVerify(user.Hash, _user.Hash);
                     if (hash == true)
                     {
-                        var userObj = JsonConvert.SerializeObject(_user);
-                        HttpContext.Session.SetString("User", userObj);
+                        HttpContext.Session.SetInt32("User", _user.ID);
                         ModelState.Clear();
                         return RedirectToAction("Index", "Restaurant");
                     }

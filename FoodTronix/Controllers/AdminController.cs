@@ -15,9 +15,12 @@ namespace FoodTronix.Controllers
             foodTronix = _foodTronix;
         }
 
+        [Route("admin")]
         public IActionResult Index()
         {
             ViewData["meals"] = foodTronix.Meal.ToArray().Length;
+            ViewData["dishes"] = foodTronix.Dish.ToArray().Length;
+            ViewData["users"] = foodTronix.User.ToArray().Length;
             return View();
         }
     }

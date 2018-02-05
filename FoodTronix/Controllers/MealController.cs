@@ -23,6 +23,7 @@ namespace FoodTronix.Controllers
             environment = _environment;
         }
 
+        [Route("meal")]
         // GET: Meal
         public ActionResult Index()
         {
@@ -30,13 +31,14 @@ namespace FoodTronix.Controllers
             return View(meal);
         }
 
+        [Route("meal/details/{id:int}")]
         // GET: Meal/Details/5
         public async Task<ActionResult> Details(int id)
         {
             var meal = await foodTronix.Meal.FindAsync(id);
             return View(meal);
         }
-
+        
         // GET: Meal/Create
         public ActionResult Create()
         {
@@ -76,7 +78,7 @@ namespace FoodTronix.Controllers
             }
             return View();
         }
-
+        
         // GET: Meal/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
@@ -133,7 +135,7 @@ namespace FoodTronix.Controllers
             }
             return View(meal);
         }
-
+        
         // GET: Meal/Delete/5
         public async Task<ActionResult> Delete(int id)
         {

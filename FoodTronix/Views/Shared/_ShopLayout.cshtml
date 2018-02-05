@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FoodTronix | @ViewData["title"]</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Shop/resources/css/combined.min.css">
+    <!-- THEME CUSTOMiZATION OPTIONS -->
+    <style type="text/css">
+        body {
+            color: #6c7a89;
+            background: #ecf0f1
+        }
+
+        .navbar-default .navbar-nav > li > a {
+            color: #ffffff;
+        }
+
+        .navbar {
+            background: rgba(60,68,76,1);
+        }
+
+        #sub-footer {
+            background: #3c444c;
+        }
+
+        #main-footer {
+            background: #ecf0f1;
+        }
+
+        .btn-default {
+            border-color: #000000;
+        }
+
+            .btn-default:hover {
+                background: #000000
+            }
+
+        .btn-important {
+            background: #6c7a89;
+        }
+
+        .brn-important:hover {
+            background: #6c7a89;
+        }
+
+        i {
+            color: #6c7a89;
+        }
+
+        .intro {
+            background: url( /resources/urban_essence/img/bg.jpg?1448067242 )no-repeat top center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a class="navbar-brand" href="javasript:void();" style="color:whitesmoke; font-size:1.5em; font-family: Intro">FOODTRONIX</a><li/>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("Index","Shop")">SHOP</a></li>
+                    <li>
+                        <a href="@Url.Action("Logout","Account")"><i class="fa fa-lock"></i> LOGOUT</a>
+                    </li>
+                    <li id="normal-cart">
+                        <a id="normal-carts" href="@Url.Action("Shop","Cart")" data-toggle="dropdown"> <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs" id="navbar-totals">0 ITEMS</span></a>
+                        <div id="mini-cart" class="dropdown-menu">
+                            <h6>No items in cart.</h6>
+                        </div>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="row content">
+        @RenderBody()
+    </div>
+    <div class="jumbotron" id="sub-footer">
+        <div class="content">
+            <div style="color:whitesmoke" class="col-md-3">
+                <a href="mailto:bansowisdom@gmail.com"><i class="fa fa-envelope-o"></i>  INFO@FOODTRONIX.COM</a>
+            </div>
+            <div style="color:whitesmoke" class="col-md-3">
+                <a href="tel:+2348140723300"><i class="fa fa-mobile fa-lg"></i> +2348140723300</a>
+            </div>
+            <div class="col-md-3" style="color:whitesmoke" id="social-icons">
+                <a href="http://twitter.com/Overrideveloper" target="_blank"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+            </div>
+        </div>
+        <div style="color:whitesmoke" id="social-icons">
+            <p>FoodTronix  &copy; @DateTime.Now.Year</p>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Shop/resources/js/jquery-migrate-1.2.1.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Shop/resources/js/main.js"></script>
+</body>
+</html>

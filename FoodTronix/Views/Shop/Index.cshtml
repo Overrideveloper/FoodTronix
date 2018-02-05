@@ -1,0 +1,23 @@
+﻿@model IEnumerable<FoodTronix.Models.Entities.Meal>
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="row">
+        <h2 style="text-align:center; font-weight: 500">MEAL CATEGORIES</h2>
+        <br />
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 shop-item" id="card">
+                <a href="@Url.Action("Dishes", "Shop", new { id = item.ID })">
+                    <img src="~/uploads/@item.Image" style="max-width:100%; max-height:100%;" alt="@item.Name">
+                    <div class="item-detail">
+                        <h2>@item.Name</h2>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

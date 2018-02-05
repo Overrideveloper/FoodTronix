@@ -1,0 +1,48 @@
+﻿@model FoodTronix.Models.Entities.Dish
+
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+<div clas="jumbotron">
+    <form class="custom" asp-action="Add">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row" id="product">
+            <div class="content" id="product-page">
+                <div id="product-gallery" class="col-md-8">
+
+                    <ul class="col-md-3 thumblist">
+                        <li>
+                            <img src="~/uploads/@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Image)">
+                        </li>
+                        <li>
+                            <img src="~/uploads/@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Image)">
+                        </li>
+                    </ul>
+
+
+                    <div class="col-md-9" id="main-img">
+                        <img id="big-thumb" src="~/uploads/@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Name)">
+                    </div>
+
+                </div>
+
+                <div id="product-detail" class="col-md-4">
+                    <h2>@Html.DisplayFor(model => model.Name)</h2>
+                    <h3>N @Html.DisplayFor(model => model.Amount)</h3>
+                    <br />
+                    <div class="add-cart-holder form-group">
+                        <div class="quantity-selector">
+                            <h4>Quantity</h4>
+                            <input id="Amount" class="form-control quantity" name="Amount" />
+                        </div>
+                    </div>
+                    <input id="DishId" class="form-control quantity" type="hidden" value="1" name="quantity" />
+                    <input id="OrderGroupId" class="form-control quantity" type="hidden" value="1" name="quantity" />
+                    <input type="submit" class="btn btn-success" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div> 

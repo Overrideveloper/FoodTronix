@@ -42,24 +42,24 @@
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Meal.Name)
-                    </td>
-                    <td>
-                        <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.ID"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                        <a class="btn btn-sm btn-warning" asp-action="Details" asp-route-id="@item.ID"><i class="fa fa-folder-open-o"></i> Details</a>
-                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ID"><i class="fa fa-trash-o"></i> Delete</a>
-                    </td>
-                </tr>
-}
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    N @Html.DisplayFor(modelItem => item.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Meal.Name)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.ID"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                    <a class="btn btn-sm btn-warning" asp-action="Details" asp-route-id="@item.ID"><i class="fa fa-folder-open-o"></i> Details</a>
+                                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ID"><i class="fa fa-trash-o"></i> Delete</a>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

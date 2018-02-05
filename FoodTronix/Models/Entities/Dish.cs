@@ -23,5 +23,6 @@ namespace FoodTronix.Models.Entities
         // Entity r/ship
         public int MealID { get; set; }
         public virtual Meal Meal { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

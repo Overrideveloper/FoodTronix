@@ -5,43 +5,53 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
-<h4>Dish</h4>
-<hr />
+<br />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="col-lg-12">
+        <a class="btn btn-lg btn-info pull-right" asp-action="Index"><i class="fa fa-arrow-circle-left"></i> Back to List</a>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b style="font-size: large">Edit</b>
             </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form asp-action="Edit" enctype="multipart/form-data">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input asp-for="Name" class="form-control">
+                                <p class="help-block">Name of dish e.g Pancakes, Tuna salad, Lasagne, Brownies, Bruschetta, Samosa</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Amount</label>
+                                <input asp-for="Amount" class="form-control">
+                                <p class="help-block">Cost of dish</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Meal</label>
+                                <select asp-for="MealID" class="form-control" asp-items="ViewBag.MealID">
+                                    <option>--- Select a meal category ---</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Image</label>
+                                <input class="form-control" type="file" name="file" />
+                                <p class="help-block">Image file</p>
+                            </div>
+                            <input type="hidden" value="blank" asp-for="Image" />
+                            <input type="submit" class="btn btn-success" value="Submit" />
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MealID" class="control-label"></label>
-                <select asp-for="MealID" class="form-control" asp-items="ViewBag.MealID"></select>
-                <span asp-validation-for="MealID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

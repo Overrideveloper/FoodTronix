@@ -21,8 +21,6 @@ namespace FoodTronix.Models.Entities
         public string Hash { get; set; }
 
         //Entity r/ship
-        /*public int RoleID { get; set; }
-
-        public virtual Role Role { get; set; }*/
+        public ICollection<OrderGroup> OrderGroups { get; set; }
     }
 }
