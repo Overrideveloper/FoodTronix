@@ -12,7 +12,7 @@
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="2.1.2" />
     <PackageReference Include="Bootbox.JS" Version="4.4.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
     <PackageReference Include="MySql.Data" Version="6.10.6" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.6" />
